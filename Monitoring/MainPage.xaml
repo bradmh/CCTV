@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="Monitoring.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Monitoring"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.TopAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Setting" Label="Ustawienia" Click="Settings_Click"/>
+        </CommandBar>
+    </Page.TopAppBar>
+
+    <Grid KeyDown="ActivatePredefinedSettings">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Operator" HorizontalAlignment="Right" FontSize="22" FontWeight="SemiBold" Margin="5" Grid.Column="1" Grid.Row="1"/>
+        <ComboBox x:Name="UsersComboBox" ItemsSource="{Binding}" Margin="5" MinWidth="400" MaxWidth="400" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock HorizontalAlignment="Right" FontSize="22" FontWeight="SemiBold" Text="Hasło" Margin="5,40,5,5" Grid.Column="1" Grid.Row="3"/>
+        <PasswordBox x:Name="passwordBox"  Margin="5" MinWidth="400" MaxWidth="400" Grid.Column="1" Grid.Row="4"/>
+        <Button x:Name="loginBtn" Click="loginBtn_Click" HorizontalAlignment="Center" Content="Zaloguj" Grid.Column="1" Grid.Row="5"/>
+        <Button x:Name="predefinedSettingsBtn" Visibility="Collapsed" Click="PredefinedSettings_Click" Grid.Column="1" Grid.Row="5" Content="Ustawienia domyślne"/>
+
+        <TextBlock Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" FontFamily="Arial">
+            <Run FontStyle="Italic" FontWeight="Light" Text="Ikona aplikacji stworzona przez"></Run>
+            <Span FontWeight="SemiBold">
+                <Hyperlink NavigateUri="https://www.flaticon.com/authors/phatplus">phatplus</Hyperlink>
+                <Run FontStyle="Italic" FontWeight="Light" Text="z flaticon.com."></Run>
+            </Span>
+        </TextBlock>
+    </Grid>
+</Page>

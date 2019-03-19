@@ -1,0 +1,101 @@
+﻿<Page
+    x:Class="Monitoring.Admin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Monitoring"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.TopAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Back" Label="Wyloguj" Click="Logout_button_Click"/>
+            <AppBarButton Icon="ProtectedDocument" Label="Zdarzenia" Click="AppBar_display_Click"/>
+        </CommandBar>
+    </Page.TopAppBar>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+
+
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Nowy operator" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="18" FontWeight="SemiBold" Margin="2"/>
+        <TextBlock Text="Imię, nazwisko operatora" Grid.Row="2" Grid.Column="1" Margin="2"/>
+        <TextBlock Text="Hasło" Grid.Row="2" Grid.Column="2" Margin="2"/>
+        <TextBox x:Name="user_name" MinWidth="200" MaxWidth="200" Grid.Row="3" Grid.Column="1" Margin="2"/>
+        <PasswordBox x:Name="password" MinWidth="150" MaxWidth="150" Grid.Row="3" Grid.Column="2" Margin="2"/>
+        <TextBlock Text="Powtórz hasło" Grid.Row="4" Grid.Column="1" Margin="2"/>
+        <PasswordBox x:Name="password_confirm" MinWidth="150" Grid.Row="5" Grid.Column="1" Margin="2"/>
+        <Button x:Name="add_user_button" Click="Add_user_button_Click" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Stretch" Content="Dodaj operatora" Margin="2"/>
+
+        <MenuFlyoutSeparator Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2"/>
+        <MenuFlyoutSeparator Grid.Column="4" Grid.Row="7" Grid.ColumnSpan="2"/>
+
+        <TextBlock Text="Zmiana hasła" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="18" FontWeight="SemiBold" Margin="2"/>
+        <TextBlock Text="Operator" Grid.Row="9" Grid.Column="1" Margin="2"/>
+        <TextBlock Text="Hasło" Grid.Row="9" Grid.Column="2" Margin="2"/>
+        <ComboBox x:Name="operator_change_password" ItemsSource="{Binding}" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Stretch" Margin="2"/>
+        <PasswordBox x:Name="password_change" MinWidth="150" MaxWidth="150" Grid.Row="10" Grid.Column="2" Margin="2"/>
+        <TextBlock Text="Powtórz hasło" Grid.Row="11" Grid.Column="1" Margin="2"/>
+
+        <PasswordBox x:Name="password_change_confirm" MinWidth="150" Grid.Row="12" Grid.Column="1" Margin="2"/>
+        <Button Click="Change_password_btn_Click" x:Name="change_password_btn" Grid.Row="12" Grid.Column="2" HorizontalAlignment="Stretch" Content="Zmień hasło" Margin="2"/>
+        <MenuFlyoutSeparator Grid.Column="1" Grid.Row="13" Grid.ColumnSpan="2"/>
+
+        <TextBlock Text="Usuwanie operatora" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="14" TextAlignment="Center" FontSize="18" FontWeight="SemiBold" Margin="2"/>
+        <ComboBox x:Name="operator_remove" ItemsSource="{Binding}" Grid.Row="15" Grid.Column="1" Margin="2" HorizontalAlignment="Stretch"/>
+        <Button x:Name="operator_remove_btn" Grid.Row="15" Grid.Column="2" HorizontalAlignment="Stretch" Content="Usuń operatora" Margin="2" Click="Operator_remove_btn_Click"/>
+
+
+
+        <TextBlock Text="Ustawienia zdarzeń" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" TextAlignment="Right" FontSize="18" FontWeight="SemiBold" Margin="2"/>
+        <TextBlock Text="Zdarzenie - usuń" Grid.Row="2" Grid.Column="4" Margin="2" HorizontalAlignment="Right"/>
+        <ComboBox x:Name="type_remove" ItemsSource="{Binding}" Grid.Row="3" Grid.Column="4" MinWidth="300" Margin="2" HorizontalAlignment="Stretch"/>
+        <Button Content="Usuń" x:Name="type_remove_btn" Click="type_remove_btn_Click" Grid.Row="3" Grid.Column="5" Margin="2" HorizontalAlignment="Stretch"/>
+
+        <TextBlock Text="Zdarzenie - dodaj" Grid.Row="4" Grid.Column="4" Margin="2" HorizontalAlignment="Right"/>
+        <TextBox x:Name="type_add" Grid.Row="5" Grid.Column="4" MinWidth="300" Margin="2" HorizontalAlignment="Stretch"/>
+        <Button x:Name="type_add_btn" Click="type_add_btn_Click" Content="Dodaj" Grid.Row="5" Grid.Column="5" Margin="0,2,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+
+        <TextBlock Text="Przekazanie - usuń" Grid.Row="9" Grid.Column="4" Margin="2" HorizontalAlignment="Right"/>
+        <ComboBox x:Name="action_remove" ItemsSource="{Binding}" Grid.Row="10" Grid.Column="4" MinWidth="300" Margin="2" HorizontalAlignment="Stretch"/>
+        <Button Content="Usuń" x:Name="action_remove_btn" Click="action_remove_btn_Click" Grid.Row="10" Grid.Column="5" Margin="2" HorizontalAlignment="Stretch"/>
+
+        <TextBlock Text="Przekazanie - dodaj" Grid.Row="11" Grid.Column="4" Margin="2" HorizontalAlignment="Right"/>
+        <TextBox x:Name="action_add" Grid.Row="12" Grid.Column="4" MinWidth="300" Margin="2" HorizontalAlignment="Stretch"/>
+        <Button x:Name="action_add_btn" Click="action_add_btn_Click" Content="Dodaj" Grid.Row="12" Grid.Column="5" Margin="2" HorizontalAlignment="Left"/>
+        <MenuFlyoutSeparator Grid.Column="4" Grid.Row="13" Grid.ColumnSpan="2"/>
+
+        <TextBlock Text="Ilość kamer" Grid.Row="14" Grid.Column="4" Margin="2" HorizontalAlignment="Right"/>
+        <TextBox x:Name="kamery" Grid.Column="4" Grid.Row="15" Width="100" Margin="2" HorizontalAlignment="Right"/>
+        <Button x:Name="kamery_add_btn" Click="kamery_add_btn_Click" Grid.Column="5" Grid.Row="15"  Margin="2" HorizontalAlignment="Stretch" Content="Zmień"/>
+    </Grid>
+</Page>

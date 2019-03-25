@@ -1,5 +1,5 @@
 # Monitoring
-APP for CCTV Operators.
+APP for CCTV Operators to report events.
 **Whole database, gui and some comments are Polish!**
 
 App require existing MySQL database.
